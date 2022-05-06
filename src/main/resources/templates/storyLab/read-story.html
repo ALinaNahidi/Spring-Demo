@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Read Story</title>
+</head>
+
+<body>
+<div class="container">
+    <div class="text-center ">
+
+        <p class="h4 mb-4 my-2 shadow p-3 mb-5 bg-dark rounded text-light">Story Lab</p>
+
+        <!-- Add hidden form field to handle update -->
+        <h3 class="shadow p-3 mb-5 bg-body rounded"
+            th:text="${myStory.storyObject.title}"/>
+
+        <p class="lead shadow p-3 mb-5 bg-body rounded"
+           th:text="${myStory.storyObject.description}"/>
+
+
+        <figure class="text-center">
+            <blockquote class="blockquote">
+                <p th:text="${myStory.storyObject.moral}"/>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+                <p th:text="${myStory.storyObject.authorName}"/>
+            </figcaption>
+        </figure>
+
+      <br>
+      <br>
+      <br>
+
+
+    </div>
+    <div class="card text-center shadow-sm p-3 mb-5 bg-body rounded">
+        <div class="card-header bg-secondary">
+            Comment Box
+        </div>
+        <div class="card-body">
+            <p class="card-text">Write your comment in the box below.</p>
+            <form action="#" th:action="@{/saveComment(currentStory=${myStory.storyObject.id})}"
+                  th:object="${myStory}" method="POST">
+
+
+                <!-- Add hidden form field to handle update -->
+                <input type="hidden" th:field="*{commentsObject.id}" />
+                <input type="hidden" th:field="*{storyObject.id}" />
+                <input type="hidden" th:field="*{storyObject.title}" />
+                <input type="hidden" th:field="*{storyObject.description}" />
+                <input type="hidden" th:field="*{storyObject.moral}" />
+                <input type="hidden" th:field="*{storyObject.authorName}" />
+
+
+                <textarea th:field="*{commentsObject.description}"
+                          class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+
+                <br/>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+
+            </form>
+        </div>
+    </div>
+
+            <hr><br>
+            <div class="card">
+                <div class="card-header bg-secondary text-center ">
+                    All Comment
+                </div>
+                <div class="card-body">
+                    <div class="card" th:each="temp: ${myStory.storyObject.comments}">
+                        <div class="card-body" >
+                            <p th:text="${temp.description}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <hr>
+    <a th:href="@{/list-stories}">Back to Story List</a>
+
+</div>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+<!Doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <title>Thymeleaf Demo</title>
+    <LINK rel="stylesheet" th:href="@{/css/demo.css}">
+</head>
+<body>
+
+<p th:text="'Time on the server is: '+${theDate} " class="demo"></p>
+
+</body>
+
+</html>
