@@ -11,10 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
+
+
+
 
 @Controller
 public class StoryController {
@@ -22,6 +24,8 @@ public class StoryController {
     private StoryService storyService;
 
     private CommentsService commentsService;
+
+    private final String storyFrom = "storyLab/story-form";
 
     @Autowired
     public StoryController(StoryService storyService, CommentsService commentsService) {
@@ -45,16 +49,13 @@ public class StoryController {
     @GetMapping("/story-form")
     public String showFormForAdd(Model model){
 
-
         String username = getCurrentUserName();
 
         model.addAttribute("story",new Story());
 
         model.addAttribute("username",username);
 
-
-
-        return "storyLab/story-form";
+        return storyFrom;
     }
 
 
@@ -63,7 +64,7 @@ public class StoryController {
                             BindingResult theBindingResult){
 
         if (theBindingResult.hasErrors()){
-            return "storyLab/story-form";
+            return storyFrom;
         }
 
         String username = getCurrentUserName();
@@ -82,7 +83,7 @@ public class StoryController {
         model.addAttribute("story",theStory);
         model.addAttribute("username",username);
 
-        return "storyLab/story-form";
+        return storyFrom;
     }
 
     @GetMapping("/delete")
