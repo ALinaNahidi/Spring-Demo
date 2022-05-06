@@ -25,7 +25,7 @@ public class StoryController {
 
     private CommentsService commentsService;
 
-    private final String storyFrom = "storyLab/story-form";
+    private final static String storyFrom = "storyLab/story-form";
 
     @Autowired
     public StoryController(StoryService storyService, CommentsService commentsService) {
