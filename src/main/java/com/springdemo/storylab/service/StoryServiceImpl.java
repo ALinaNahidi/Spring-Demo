@@ -2,7 +2,6 @@ package com.springdemo.storylab.service;
 
 import com.springdemo.storylab.dao.StoryRepository;
 import com.springdemo.storylab.entity.Story;
-import com.springdemo.storylab.exceptionhandling.EmployeeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,7 +38,7 @@ public class StoryServiceImpl implements StoryService {
             story = employeeOptional.get();
         }
         else {
-            throw new EmployeeNotFoundException("Employee Not Found:"+id);
+            throw new RuntimeException("Employee Not Found:"+id);
         }
         return story;
     }
