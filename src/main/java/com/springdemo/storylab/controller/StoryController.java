@@ -25,7 +25,7 @@ public class StoryController {
 
     private CommentsService commentsService;
 
-    private final static String storyFrom = "storyLab/story-form";
+    private static final  String STORY_FORM = "storyLab/story-form";
 
     @Autowired
     public StoryController(StoryService storyService, CommentsService commentsService) {
@@ -55,7 +55,7 @@ public class StoryController {
 
         model.addAttribute("username",username);
 
-        return storyFrom;
+        return STORY_FORM;
     }
 
 
@@ -64,7 +64,7 @@ public class StoryController {
                             BindingResult theBindingResult){
 
         if (theBindingResult.hasErrors()){
-            return storyFrom;
+            return STORY_FORM;
         }
 
         String username = getCurrentUserName();
@@ -83,7 +83,7 @@ public class StoryController {
         model.addAttribute("story",theStory);
         model.addAttribute("username",username);
 
-        return storyFrom;
+        return STORY_FORM;
     }
 
     @GetMapping("/delete")
