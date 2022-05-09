@@ -2,7 +2,7 @@ package com.springdemo.storylab.service;
 
 import com.springdemo.storylab.dao.CommentsRepository;
 import com.springdemo.storylab.entity.Comments;
-import com.springdemo.storylab.exceptionhandling.EmployeeNotFoundException;
+import com.springdemo.storylab.exceptionhandling.StoryNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,7 +39,7 @@ public class CommentsServiceImpl implements CommentsService {
             comments = employeeOptional.get();
         }
         else {
-            throw new EmployeeNotFoundException("Employee Not Found:"+id);
+            throw new StoryNotFoundException("Employee Not Found:"+id);
         }
         return comments;
     }
