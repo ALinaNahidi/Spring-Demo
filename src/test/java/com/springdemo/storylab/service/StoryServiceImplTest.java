@@ -5,7 +5,6 @@ import com.springdemo.storylab.entity.Story;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.mockito.stubbing.OngoingStubbing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -78,5 +77,15 @@ class StoryServiceImplTest {
         Mockito.when(storyRepository.findAll()).thenReturn(stories);
 
         assertThat(storyService.findAll()).isEqualTo(stories);
+    }
+
+
+
+    @Test
+    void save() {
+    }
+
+    @Test
+    void deleteById() {
     }
 }
