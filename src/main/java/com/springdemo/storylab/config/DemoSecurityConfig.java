@@ -14,6 +14,8 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private static final String WRITER = "WRITER";
+
     @Autowired
     private DataSource datasource;
 
@@ -26,9 +28,9 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/list-stories").hasAnyRole("WRITER","READER")
-                .antMatchers("/story-form").hasRole("WRITER")
-                .antMatchers("/read-story").hasAnyRole("WRITER","READER")
+                .antMatchers("/list-stories").hasAnyRole(WRITER,"READER")
+                .antMatchers("/story-form").hasRole(WRITER)
+                .antMatchers("/read-story").hasAnyRole(WRITER,"READER")
 
                 .and()
                 .formLogin()
