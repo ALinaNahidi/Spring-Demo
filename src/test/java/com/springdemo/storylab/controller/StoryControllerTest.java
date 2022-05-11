@@ -30,13 +30,24 @@ class StoryControllerTest {
     private CommentsService commentsService;
 
 
+//    @Autowired
+//    private WebApplicationContext context;
+//
+//    @Before
+//    public void setup() {
+//        mvc = MockMvcBuilders
+//                .webAppContextSetup(context)
+//                .apply(springSecurity())
+//                .build();
+//    }
 
-    @Test
-    @WithMockUser(username = "author1",roles={"WRITER"})
-    void storyList() throws Exception{
-
-        this.mockMvc.perform(get("/storyLab/list-stories"));
-    }
+//    @Test
+//    @WithMockUser(username = "author1")
+//    void storyList() throws Exception{
+//
+//        this.mockMvc.perform(get("/storyLab/list-stories"))
+//                .andExpect(status().isOk());
+//    }
 
     @Test
     @WithMockUser(username = "author12",roles={"WRITER"})
