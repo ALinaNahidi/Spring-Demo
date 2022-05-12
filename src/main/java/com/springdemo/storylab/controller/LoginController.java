@@ -14,7 +14,7 @@ public class LoginController {
 
     @GetMapping("/access-denied")
     public String getAccessDeniedPage(){
-        return "access-denied";
+        return "storyLab/access-denied";
     }
 
 }

@@ -13,25 +13,25 @@ import java.util.Optional;
 @Service
 public class CommentsServiceImpl implements CommentsService {
 
-    private CommentsRepository commentsDao;
+    private CommentsRepository commentsRepository;
 
     @Autowired
-    public CommentsServiceImpl(CommentsRepository employeeDao){
-        this.commentsDao =employeeDao;
+    public CommentsServiceImpl(CommentsRepository commentsRepository){
+        this.commentsRepository =commentsRepository;
     }
 
 
     @Override
     @Transactional
     public List<Comments> findAll() {
-        return commentsDao.findAll();
+        return commentsRepository.findAll();
     }
 
     @Override
     @Transactional
     public Comments findById(int id) {
 
-        Optional<Comments> employeeOptional = commentsDao.findById(id);
+        Optional<Comments> employeeOptional = commentsRepository.findById(id);
 
         Comments comments = null;
 
@@ -47,13 +47,13 @@ public class CommentsServiceImpl implements CommentsService {
     @Override
     @Transactional
     public void save(Comments story) {
-        commentsDao.save(story);
+        commentsRepository.save(story);
     }
 
     @Override
     @Transactional
     public void deleteById(int id) {
-        commentsDao.deleteById(id);
+        commentsRepository.deleteById(id);
 
     }
 

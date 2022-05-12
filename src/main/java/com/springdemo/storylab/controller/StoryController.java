@@ -34,8 +34,6 @@ public class StoryController {
     }
 
 
-
-
     @GetMapping("/list-stories")
     public String listStories(Model model){
 

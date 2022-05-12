@@ -4,7 +4,9 @@ import com.springdemo.storylab.dao.StoryRepository;
 import com.springdemo.storylab.entity.Story;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.mockito.MockedStatic;
 import org.mockito.Mockito;
+import org.mockito.internal.matchers.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -17,6 +19,7 @@ import java.util.function.BooleanSupplier;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.eq;
 
 
 @RunWith(SpringRunner.class)
@@ -75,17 +78,10 @@ class StoryServiceImplTest {
         stories.add(story2);
 
         Mockito.when(storyRepository.findAll()).thenReturn(stories);
-
         assertThat(storyService.findAll()).isEqualTo(stories);
     }
 
 
 
-    @Test
-    void save() {
-    }
 
-    @Test
-    void deleteById() {
-    }
 }

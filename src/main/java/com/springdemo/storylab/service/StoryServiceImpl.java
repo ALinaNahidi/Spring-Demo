@@ -13,25 +13,25 @@ import java.util.Optional;
 @Service
 public class StoryServiceImpl implements StoryService {
 
-    private StoryRepository employeeDao;
+    private StoryRepository storyRepository;
 
     @Autowired
-    public StoryServiceImpl(StoryRepository employeeDao){
-        this.employeeDao=employeeDao;
+    public StoryServiceImpl(StoryRepository storyRepository){
+        this.storyRepository =storyRepository;
     }
 
 
     @Override
     @Transactional
     public List<Story> findAll() {
-        return employeeDao.findAll();
+        return storyRepository.findAll();
     }
 
     @Override
     @Transactional
     public Story findById(int id) {
 
-        Optional<Story> employeeOptional = employeeDao.findById(id);
+        Optional<Story> employeeOptional = storyRepository.findById(id);
 
         Story story = null;
 
@@ -47,13 +47,13 @@ public class StoryServiceImpl implements StoryService {
     @Override
     @Transactional
     public void save(Story story) {
-        employeeDao.save(story);
+        storyRepository.save(story);
     }
 
     @Override
     @Transactional
     public void deleteById(int id) {
-        employeeDao.deleteById(id);
+        storyRepository.deleteById(id);
 
     }
 }
