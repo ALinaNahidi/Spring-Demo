@@ -42,16 +42,18 @@
 
                     <div sec:authorize="hasRole('WRITER')">
                         <hr>
-                        <a th:href="@{/showFormForUpdate(storyId=${temp.id})}"
-                           class="btn btn-info btn-sm">
-                            Update
-                        </a>
+                        <div th:if="${#authentication.name}==${temp.authorName}">
+                            <a th:href="@{/showFormForUpdate(storyId=${temp.id})}"
+                               class="btn btn-info btn-sm">
+                                Update
+                            </a>
 
-                        <a th:href="@{/delete(storyId=${temp.id})}"
-                           class="btn btn-danger btn-sm"
-                           onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">
-                            Delete
-                        </a>
+                            <a th:href="@{/delete(storyId=${temp.id})}"
+                               class="btn btn-danger btn-sm"
+                               onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">
+                                Delete
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

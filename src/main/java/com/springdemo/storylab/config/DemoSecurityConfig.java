@@ -31,6 +31,7 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/list-stories").hasAnyRole(WRITER,"READER")
                 .antMatchers("/story-form").hasRole(WRITER)
                 .antMatchers("/read-story").hasAnyRole(WRITER,"READER")
+                .antMatchers("/showFormForUpdate").hasAnyRole(WRITER)
 
                 .and()
                 .formLogin()
